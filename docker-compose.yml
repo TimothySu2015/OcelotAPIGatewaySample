@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  payment.webapi:
+    image: ${DOCKER_REGISTRY-}payment
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Production
+       - ASPNETCORE_URLS=https://+:443;http://+:80
+       - ASPNETCORE_Kestrel__Certificates__Default__Password=admin852456
+       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+       - /tmp/:/https
+    ports:
+       - 6001:80
+    build:
+      context: .
+      dockerfile: Payment.WebAPI/Dockerfile
+  product.webapi:
+    image: ${DOCKER_REGISTRY-}product
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Production
+       - ASPNETCORE_URLS=https://+:443;http://+:80
+       - ASPNETCORE_Kestrel__Certificates__Default__Password=admin852456
+       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+       - /tmp/:/https
+    build:
+      context: .
+      dockerfile: Product.WebAPI/Dockerfile
+    ports:
+       - 6002:80
