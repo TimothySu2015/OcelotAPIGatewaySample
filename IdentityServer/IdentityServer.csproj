@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>99de9e4e-179f-4bb0-a8ee-9cc7713f095f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,5 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4" Version="3.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
 </Project>

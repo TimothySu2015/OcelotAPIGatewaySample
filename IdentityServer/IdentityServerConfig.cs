@@ -6,12 +6,26 @@ namespace IdentityServer
 {
     public class IdentityServerConfig
     {
+        public static object JwtClaimtypes { get; private set; }
+
         public static IEnumerable<ApiResource> GetApiResources()
         {
             return new List<ApiResource>
             {
                new ApiResource("api1","MyApi"),
                new ApiResource("api2","MyApi2")
+            };
+        }
+
+        public static List<IdentityResource> GetIdentityResources()
+        {
+            var openIdScope = new IdentityResources.OpenId();
+
+            return new List<IdentityResource>
+            {
+                openIdScope,
+                new IdentityResources.Profile(),
+                new IdentityResources.Email()
             };
         }
 
@@ -26,7 +40,10 @@ namespace IdentityServer
                     {
                       new Secret("secret".Sha256())
                     },
-                    AllowedScopes={ "api1","api2",IdentityServerConstants.StandardScopes.OfflineAccess //如果要獲取refresh_tokens ,必須在scopes中加上OfflineAccess
+                    AllowedScopes={ "api1","api2",
+                        IdentityServerConstants.StandardScopes.OfflineAccess, //如果要獲取refresh_tokens ,必須在scopes中加上OfflineAccess
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OpenId
                     },
                     AllowOfflineAccess=true// 主要重新整理refresh_token,
         

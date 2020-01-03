@@ -29,6 +29,8 @@ namespace IdentityServer
                 .AddDeveloperSigningCredential()
                 .AddInMemoryApiResources(IdentityServerConfig.GetApiResources())
                 .AddInMemoryClients(IdentityServerConfig.GetClients())
+                .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
+                .AddProfileService<ProfileService>()
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
             services.AddControllers();
         }

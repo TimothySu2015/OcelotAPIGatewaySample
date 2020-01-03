@@ -6,7 +6,7 @@ services:
     environment:
        - ASPNETCORE_ENVIRONMENT=Production
        - ASPNETCORE_URLS=https://+:443;http://+:80
-       - ASPNETCORE_Kestrel__Certificates__Default__Password=admin852456
+       - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
        - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
        - /tmp/:/https
@@ -20,7 +20,7 @@ services:
     environment:
        - ASPNETCORE_ENVIRONMENT=Production
        - ASPNETCORE_URLS=https://+:443;http://+:80
-       - ASPNETCORE_Kestrel__Certificates__Default__Password=admin852456
+       - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
        - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
        - /tmp/:/https
@@ -29,3 +29,32 @@ services:
       dockerfile: Product.WebAPI/Dockerfile
     ports:
        - 6002:80
+  identityserver:
+    image: ${DOCKER_REGISTRY-}identityserver
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Production
+       - ASPNETCORE_URLS=https://+:443;http://+:80
+       - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+       - /tmp/:/https
+    ports:
+       - 6003:80
+    build:
+      context: .
+      dockerfile: IdentityServer/Dockerfile
+  ocelotapigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Production
+       - ASPNETCORE_URLS=https://+:443;http://+:80
+       - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+       - /tmp/:/https
+    ports:
+       - 6000:80
+    build:
+      context: .
+      dockerfile: OcelotAPIGateway/Dockerfile
+
