@@ -23,7 +23,23 @@
       ],
       "UpstreamPathTemplate": "/payment/{everything}",
       "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/account/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.10.41",
+          "Port": 6004
+        }
+      ],
+      "UpstreamPathTemplate": "/account/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
     }
   ],
+  "AuthenticationOptions": {
+    "AuthenticationProviderKey": "PaymentKey",
+    "AllowedScopes": []
+  },
   "GlobalConfiguration": {}
 }

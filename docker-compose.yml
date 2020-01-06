@@ -57,4 +57,18 @@ services:
     build:
       context: .
       dockerfile: OcelotAPIGateway/Dockerfile
+  account.webapi:
+    image: ${DOCKER_REGISTRY-}account
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Production
+       - ASPNETCORE_URLS=https://+:443;http://+:80
+       - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+       - /tmp/:/https
+    ports:
+       - 6004:80
+    build:
+      context: .
+      dockerfile: Account.WebAPI/Dockerfile
 

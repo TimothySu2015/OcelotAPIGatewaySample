@@ -3,16 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
-    <UserSecretsId>db028d30-489a-4c13-9ea3-26ef44f57718</UserSecretsId>
+    <UserSecretsId>c8d71b74-6e32-496a-a498-487a593f251b</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\WeatherForecastController.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <Folder Include="interfaces\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

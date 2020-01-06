@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,10 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
 
-namespace OcelotAPIGateway
+namespace Account.WebAPI
 {
     public class Startup
     {
@@ -29,20 +26,8 @@ namespace OcelotAPIGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-     
 
-            Action<IdentityServerAuthenticationOptions> paymentOptClient = option =>
-             {
-                 option.Authority = Configuration["IdentityService:Uri"];
-                 option.ApiName = "PaymentService";
-                 option.RequireHttpsMetadata = false;
-                 option.SupportedTokens = SupportedTokens.Both;
-                 option.ApiSecret = Configuration["IdentityService:ApiSecrets:PaymentService"];
-             };
-
-            services.AddAuthentication().AddIdentityServerAuthentication("PaymentKey", paymentOptClient);
-
-            services.AddOcelot(Configuration);
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,10 +44,10 @@ namespace OcelotAPIGateway
 
             app.UseAuthorization();
 
-            app.UseOcelot().Wait();
-
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/health");
+
                 endpoints.MapControllers();
             });
         }

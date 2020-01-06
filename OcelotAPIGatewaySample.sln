@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityS
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C9645F54-BDBB-4140-8F42-F5D66E775F8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.WebAPI", "Account.WebAPI\Account.WebAPI.csproj", "{44EE8EDC-993E-4340-9D3B-DD8B2B5F3293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,5 +39,9 @@ Global
 		{C9645F54-BDBB-4140-8F42-F5D66E775F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9645F54-BDBB-4140-8F42-F5D66E775F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9645F54-BDBB-4140-8F42-F5D66E775F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44EE8EDC-993E-4340-9D3B-DD8B2B5F3293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44EE8EDC-993E-4340-9D3B-DD8B2B5F3293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44EE8EDC-993E-4340-9D3B-DD8B2B5F3293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44EE8EDC-993E-4340-9D3B-DD8B2B5F3293}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

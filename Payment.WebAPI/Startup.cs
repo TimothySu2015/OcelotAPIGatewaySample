@@ -26,6 +26,12 @@ namespace Payment.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddAuthentication("Bearer").AddIdentityServerAuthentication(option => {
+                option.Authority = "http://192.168.10.41:6003";
+                option.ApiName = "PaymentService";
+                option.RequireHttpsMetadata = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

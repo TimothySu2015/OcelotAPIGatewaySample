@@ -12,8 +12,8 @@ namespace IdentityServer
         {
             return new List<ApiResource>
             {
-               new ApiResource("api1","MyApi"),
-               new ApiResource("api2","MyApi2")
+               new ApiResource("PaymentService","Payment Service"),
+               new ApiResource("ProductService","Product Service")
             };
         }
 
@@ -40,7 +40,7 @@ namespace IdentityServer
                     {
                       new Secret("secret".Sha256())
                     },
-                    AllowedScopes={ "api1","api2",
+                    AllowedScopes={ "PaymentService","ProductService",
                         IdentityServerConstants.StandardScopes.OfflineAccess, //如果要獲取refresh_tokens ,必須在scopes中加上OfflineAccess
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OpenId
