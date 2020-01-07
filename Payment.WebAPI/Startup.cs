@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 
 namespace Payment.WebAPI
 {
@@ -30,6 +31,7 @@ namespace Payment.WebAPI
             services.AddAuthentication("Bearer").AddIdentityServerAuthentication(option => {
                 option.Authority = "http://192.168.10.41:6003";
                 option.ApiName = "PaymentService";
+                option.ApiSecret = "secret"; 
                 option.RequireHttpsMetadata = false;
             });
         }
@@ -42,9 +44,14 @@ namespace Payment.WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
-           // app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
+
+
+            IdentityModelEventSource.ShowPII = true;
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -52,6 +59,9 @@ namespace Payment.WebAPI
             {
                 endpoints.MapControllers();
             });
+
+         
+
         }
     }
 }

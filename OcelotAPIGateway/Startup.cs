@@ -37,12 +37,12 @@ namespace OcelotAPIGateway
                  option.ApiName = "PaymentService";
                  option.RequireHttpsMetadata = false;
                  option.SupportedTokens = SupportedTokens.Both;
-                 option.ApiSecret = Configuration["IdentityService:ApiSecrets:PaymentService"];
+              //   option.ApiSecret = Configuration["IdentityService:ApiSecrets:PaymentService"];
              };
 
             services.AddAuthentication().AddIdentityServerAuthentication("PaymentKey", paymentOptClient);
 
-            services.AddOcelot(Configuration);
+            services.AddOcelot();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

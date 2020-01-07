@@ -39,7 +39,9 @@
   ],
   "AuthenticationOptions": {
     "AuthenticationProviderKey": "PaymentKey",
-    "AllowedScopes": []
+    "AllowedScopes": [ "PaymentService" ]
   },
-  "GlobalConfiguration": {}
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId"
+  }
 }
