@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4.Models;
@@ -14,6 +15,7 @@ namespace IdentityServer
             {
                 context.Result = new GrantValidationResult(
                  subject: context.UserName,
+                 claims:new Claim[] { new Claim(ClaimTypes.NameIdentifier,"Tester") },
                  authenticationMethod: OidcConstants.AuthenticationMethods.Password);
             }
             else

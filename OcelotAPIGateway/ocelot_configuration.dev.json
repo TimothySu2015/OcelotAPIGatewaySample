@@ -22,7 +22,11 @@
         }
       ],
       "UpstreamPathTemplate": "/payment/{everything}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "PaymentKey",
+        "AllowedScopes": [ "PaymentService" ]
+      }
     },
     {
       "DownstreamPathTemplate": "/api/account/{everything}",
@@ -37,10 +41,7 @@
       "UpstreamHttpMethod": [ "GET", "POST" ]
     }
   ],
-  "AuthenticationOptions": {
-    "AuthenticationProviderKey": "PaymentKey",
-    "AllowedScopes": [ "PaymentService" ]
-  },
+
   "GlobalConfiguration": {
     "RequestIdKey": "OcRequestId"
   }

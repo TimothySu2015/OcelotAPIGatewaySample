@@ -57,6 +57,8 @@ namespace OcelotAPIGateway
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseOcelot().Wait();

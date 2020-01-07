@@ -28,10 +28,11 @@ namespace Payment.WebAPI
         {
             services.AddControllers();
 
-            services.AddAuthentication("Bearer").AddIdentityServerAuthentication(option => {
+            services.AddAuthentication("Bearer").AddIdentityServerAuthentication(option =>
+            {
                 option.Authority = "http://192.168.10.41:6003";
                 option.ApiName = "PaymentService";
-                option.ApiSecret = "secret"; 
+                option.ApiSecret = "secret";
                 option.RequireHttpsMetadata = false;
             });
         }
@@ -47,7 +48,7 @@ namespace Payment.WebAPI
             // app.UseHttpsRedirection();
 
 
-            IdentityModelEventSource.ShowPII = true;
+          //  IdentityModelEventSource.ShowPII = true;
 
             app.UseRouting();
 
